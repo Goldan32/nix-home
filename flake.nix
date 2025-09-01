@@ -12,12 +12,12 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
     in {
-      homeConfigurations.myuser = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.goldan = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           {
-            home.username = "myuser";
-            home.homeDirectory = "/home/myuser";
+            home.username = "goldan";
+            home.homeDirectory = "/home/goldan";
 
             # Basic example: install some packages
             home.packages = with pkgs; [
