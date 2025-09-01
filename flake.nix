@@ -41,19 +41,20 @@
               neovim
               ripgrep
               stylua
+              bash-language-server
+              typescript-language-server
+              prettier
+              pyright
+              shellcheck
 
               # Cargo packages
               cargo
               bat
 
-              # NPM packages
-              bash-language-server
-              markdownlint-cli
+              # NodeJS related
+              # TODO: Set up a way to npm i packages from nix
+              nodejs-slim
               typescript
-              typescript-language-server
-              prettier
-              pyright
-              shellcheck
               nodenv
 
             ];
