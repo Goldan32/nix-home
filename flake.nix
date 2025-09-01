@@ -21,15 +21,41 @@
 
             # Basic example: install some packages
             home.packages = with pkgs; [
+              # Used to be apt
               git
               zsh
-              neovim
               htop
               cowsay
-              ripgrep
               gcc
               stow
               tree
+              gnutar
+              cmake
+              ninja
+              gettext
+              pkg-config
+              unzip
+              sqlite
+
+              # Neovim and co.
+              neovim
+              ripgrep
+              stylua
+
+              # Cargo packages
+              cargo
+              bat
+
+              # NPM packages
+              bash-language-server
+              markdownlint-cli
+              typescript
+              typescript-language-server
+              prettier
+              pyright
+              shellcheck
+              nodenv
+
             ];
 
             programs.zsh.enable = false;
