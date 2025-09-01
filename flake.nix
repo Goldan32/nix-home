@@ -1,5 +1,5 @@
 {
-  description = "My Ubuntu Home Manager config";
+  description = "Ubuntu Home Manager config";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -24,13 +24,27 @@
               neovim
               htop
               cowsay
+	      ripgrep
+	      gcc
+	      stow
+	      tree
             ];
 
             programs.zsh.enable = true;
             programs.git.enable = true;
 
-            # Always recommended
-            home.stateVersion = "24.05"; # Adjust to current HM release
+            home.file.".zshrc" = {
+              source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/.zshrc";
+            };
+          
+            home.activation.linkDotfiles = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+              CURDIR="$(pwd)"
+              cd "${config.home.homeDirectory}/nix-home/dotfiles" && \
+              ${pkgs.stow}/bin/stow --no-folding -t "$HOME" .
+              cd "$CURDIR"
+            '';
+
+            home.stateVersion = "25.05"; # Adjust to current HM release
           }
         ];
       };
