@@ -15,28 +15,30 @@
       homeConfigurations.goldan = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          {
+          ({ config, lib, pkgs, ...}: {
             home.username = "goldan";
             home.homeDirectory = "/home/goldan";
 
             # Basic example: install some packages
             home.packages = with pkgs; [
+              git
+              zsh
               neovim
               htop
               cowsay
-	      ripgrep
-	      gcc
-	      stow
-	      tree
+              ripgrep
+              gcc
+              stow
+              tree
             ];
 
-            programs.zsh.enable = true;
-            programs.git.enable = true;
+            programs.zsh.enable = false;
+            programs.git.enable = false;
 
             home.file.".zshrc" = {
-              source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/dotfiles/.zshrc";
+              source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-home/dotfiles/.zshrc";
             };
-          
+
             home.activation.linkDotfiles = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
               CURDIR="$(pwd)"
               cd "${config.home.homeDirectory}/nix-home/dotfiles" && \
@@ -45,7 +47,7 @@
             '';
 
             home.stateVersion = "25.05"; # Adjust to current HM release
-          }
+          })
         ];
       };
     };
