@@ -7,7 +7,7 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    jotter.url = "github:Goldan32/jotter?ref=master";
+    jotter.url = "github:Goldan32/jotter?ref=0.4.1";
     jotter.inputs.nixpkgs.follows = "nixpkgs";
   };
 

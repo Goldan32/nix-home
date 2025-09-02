@@ -46,16 +46,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1756833703,
-        "narHash": "sha256-KiuFIFXnrOd49vd96mbTPocPtkjPoQ0p4kqZjstHB9c=",
+        "lastModified": 1756844401,
+        "narHash": "sha256-Fu1+d/6bWDEAYuRkAp/8zSM3NqgPC4d+tqPrBfSJt08=",
         "owner": "Goldan32",
         "repo": "jotter",
-        "rev": "116f9595c0230f042b1cfef7575e47d7cca70a99",
+        "rev": "a146fe0855f6f6065e400c448a58abbb2e30cb6c",
         "type": "github"
       },
       "original": {
         "owner": "Goldan32",
-        "ref": "master",
+        "ref": "0.4.1",
         "repo": "jotter",
         "type": "github"
       }
