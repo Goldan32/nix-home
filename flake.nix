@@ -3,11 +3,15 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    jotter.url = "github:Goldan32/jotter?ref=master";
+    jotter.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, jotter, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -51,9 +55,9 @@
               # Cargo packages
               cargo
               bat
+              jotter.packages.${system}.default
 
               # NodeJS related
-              # TODO: Set up a way to npm i packages from nix
               nodejs
               typescript
               nodenv
