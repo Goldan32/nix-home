@@ -24,6 +24,7 @@
               # Used to be apt
               git
               zsh
+              gnumake
               htop
               cowsay
               gcc
@@ -53,7 +54,7 @@
 
               # NodeJS related
               # TODO: Set up a way to npm i packages from nix
-              nodejs-slim
+              nodejs
               typescript
               nodenv
 
