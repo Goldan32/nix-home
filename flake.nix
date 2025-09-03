@@ -42,6 +42,7 @@
               unzip
               sqlite
               dunst
+              fd
 
               # Neovim and co.
               neovim
@@ -62,6 +63,10 @@
               nodejs
               typescript
               nodenv
+
+              # Other
+              firefox
+              roboto-mono
 
             ];
 
