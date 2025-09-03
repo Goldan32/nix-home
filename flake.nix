@@ -78,6 +78,10 @@
               cd "$CURDIR"
             '';
 
+            home.activation.batCacheBuild = lib.hm.dag.entryAfter [ "linkDotfiles" ] ''
+              ${pkgs.bat}/bin/bat cache --build
+            ''
+
             home.stateVersion = "25.05"; # Adjust to current HM release
           })
         ];
