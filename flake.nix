@@ -41,6 +41,7 @@
               pkg-config
               unzip
               sqlite
+              dunst
 
               # Neovim and co.
               neovim
@@ -67,6 +68,9 @@
             programs.zsh.enable = false;
             programs.git.enable = false;
 
+            #
+            # Dotfiles
+            #
             home.file.".zshrc" = {
               source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-home/dotfiles/.zshrc";
             };
@@ -80,9 +84,29 @@
 
             home.activation.batCacheBuild = lib.hm.dag.entryAfter [ "linkDotfiles" ] ''
               ${pkgs.bat}/bin/bat cache --build
-            ''
+            '';
 
-            home.stateVersion = "25.05"; # Adjust to current HM release
+            #
+            # Dunst service
+            #
+            systemd.user.services.dunst = {
+              Unit = {
+                Description = "Dunst Notification Daemon";
+                After = "default.target";
+              };
+              Install.WantedBy = ["default.target"];
+              Service = {
+                Type = "exec";
+                ExecStart = "${pkgs.dunst}/bin/dunst";
+                # Restart = "always";
+                # RestartSec = 5;
+              };
+            };
+
+            #
+            # For some reason
+            #
+            home.stateVersion = "25.05";
           })
         ];
       };
