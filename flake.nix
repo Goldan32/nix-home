@@ -58,6 +58,7 @@
               cargo
               bat
               jotter.packages.${system}.default
+              cargo-generate
 
               # NodeJS related
               nodejs
@@ -67,6 +68,7 @@
               # Other
               firefox
               roboto-mono
+              wezterm
 
             ];
 
