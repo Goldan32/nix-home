@@ -62,8 +62,12 @@
   };
 
   home.activation.linkDotfiles = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    DOTFILES="${config.home.homeDirectory}/nix-home/dotfiles"
+    if [ ! -d "$DOTFILES" ]; then
+      ${pkgs.git}/bin/git clone ssh://git@github.com/Goldan32/dotfiles "$DOTFILES"
+    fi
     CURDIR="$(pwd)"
-    cd "${config.home.homeDirectory}/nix-home/dotfiles" && \
+    cd "$DOTFILES" && \
     ${pkgs.stow}/bin/stow --no-folding -t "$HOME" .
     cd "$CURDIR"
   '';
