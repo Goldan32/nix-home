@@ -19,7 +19,9 @@
       homeConfigurations.goldan = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = { inherit jotter system; };
-        modules = [ ./users/goldan.nix ];
+        modules = [ 
+          ./users/goldan.nix 
+        ];
       };
 
       hmModules.goldan = ./users/goldan.nix;

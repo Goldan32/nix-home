@@ -1,4 +1,25 @@
-{ config, lib, pkgs, jotter, system, ... }: {
+{ config, lib, pkgs, jotter, system, ... }: 
+let
+  dotfiles = builtins.fetchGit {
+    url = "https://github.com/Goldan32/dotfiles";
+    rev = "bf129577a66c3620349dd0126742492bebf2bce8";
+  };
+
+  # automatically collect subdirs from dotfiles/config/
+  configDirs = builtins.attrNames (builtins.readDir "${dotfiles}/.config");
+
+  blacklist = [ "Code" ];
+  filteredConfigDirs = lib.filter (dir: !(builtins.elem dir blacklist)) configDirs;
+
+  configAttrs = builtins.listToAttrs (map (dir: {
+    name = ".config/${dir}";
+    value = {
+      source = "${dotfiles}/.config/${dir}";
+      recursive = true;
+    };
+  }) filteredConfigDirs);
+in
+{
   home.username = "goldan";
   home.homeDirectory = "/home/goldan";
 
@@ -11,7 +32,6 @@
     htop
     cowsay
     gcc
-    stow
     tree
     gnutar
     cmake
@@ -57,22 +77,18 @@
   #
   # Dotfiles
   #
-  home.file.".zshrc" = {
-    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nix-home/dotfiles/.zshrc";
-  };
+  home.file = lib.mkMerge [
+    configAttrs
+    {
+      ".zshrc".source = "${dotfiles}/.zshrc";
+      ".zsh/machines".source = "${dotfiles}/.zsh/machines";
+      ".zsh/patches".source = "${dotfiles}/.zsh/patches";
+      ".zsh/scripts".source = "${dotfiles}/.zsh/scripts";
+      ".local/scripts".source = "${dotfiles}/.local/scripts";
+    }
+  ];
 
-  home.activation.linkDotfiles = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    DOTFILES="${config.home.homeDirectory}/nix-home/dotfiles"
-    if [ ! -d "$DOTFILES" ]; then
-      ${pkgs.git}/bin/git clone ssh://git@github.com/Goldan32/dotfiles "$DOTFILES"
-    fi
-    CURDIR="$(pwd)"
-    cd "$DOTFILES" && \
-    ${pkgs.stow}/bin/stow --no-folding -t "$HOME" .
-    cd "$CURDIR"
-  '';
-
-  home.activation.batCacheBuild = lib.hm.dag.entryAfter [ "linkDotfiles" ] ''
+  home.activation.batCacheBuild = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     ${pkgs.bat}/bin/bat cache --build
   '';
 
