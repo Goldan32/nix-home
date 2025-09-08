@@ -2,7 +2,7 @@
 let
   dotfiles = builtins.fetchGit {
     url = "https://github.com/Goldan32/dotfiles";
-    rev = "bf129577a66c3620349dd0126742492bebf2bce8";
+    rev = "f78ae30dbe6c3cd3a0dd7c73e768d9f3ee1bc392";
   };
 
   # automatically collect subdirs from dotfiles/config/
@@ -68,11 +68,9 @@ in
     firefox
     roboto-mono
     wezterm
+    zoxide
 
   ];
-
-  programs.zsh.enable = false;
-  programs.git.enable = false;
 
   #
   # Dotfiles
@@ -85,6 +83,7 @@ in
       ".zsh/patches".source = "${dotfiles}/.zsh/patches";
       ".zsh/scripts".source = "${dotfiles}/.zsh/scripts";
       ".local/scripts".source = "${dotfiles}/.local/scripts";
+      ".local/start-page".source = "${dotfiles}/.local/start-page";
     }
   ];
 
