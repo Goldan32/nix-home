@@ -2,7 +2,7 @@
 let
   dotfiles = builtins.fetchGit {
     url = "https://github.com/Goldan32/dotfiles";
-    rev = "f78ae30dbe6c3cd3a0dd7c73e768d9f3ee1bc392";
+    rev = "016419fc93e0244382bbb5934b2e6a0524d887e6";
   };
 
   # automatically collect subdirs from dotfiles/config/
@@ -25,6 +25,8 @@ in
 
   # Basic example: install some packages
   home.packages = with pkgs; [
+    #NixOS must have
+    hostname
     # Used to be apt
     git
     zsh
@@ -42,6 +44,7 @@ in
     sqlite
     dunst
     fd
+    wofi
 
     # Neovim and co.
     neovim
