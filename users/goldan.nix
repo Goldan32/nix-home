@@ -22,6 +22,8 @@ in
   home.packages = with pkgs; [
     #NixOS must have
     hostname
+    acpi
+
     # Used to be apt
     git
     zsh
