@@ -1,10 +1,5 @@
-{ config, lib, pkgs, jotter, system, ... }: 
+{ config, lib, pkgs, jotter, system, dotfiles, ... }: 
 let
-  dotfiles = builtins.fetchGit {
-    url = "https://github.com/Goldan32/dotfiles";
-    rev = "016419fc93e0244382bbb5934b2e6a0524d887e6";
-  };
-
   # automatically collect subdirs from dotfiles/config/
   configDirs = builtins.attrNames (builtins.readDir "${dotfiles}/.config");
 

@@ -9,16 +9,18 @@
 
     jotter.url = "github:Goldan32/jotter?ref=0.4.1";
     jotter.inputs.nixpkgs.follows = "nixpkgs";
+
+    dotfiles.url = "github:Goldan32/dotfiles/nixos";
   };
 
-  outputs = { self, nixpkgs, home-manager, jotter, ... }:
+  outputs = { self, nixpkgs, home-manager, jotter, dotfiles, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
     in {
       homeConfigurations.goldan = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = { inherit jotter system; };
+        extraSpecialArgs = { inherit jotter system dotfiles; };
         modules = [ 
           ./users/goldan.nix 
         ];
