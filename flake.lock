@@ -5,11 +5,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1757441741,
-        "narHash": "sha256-p6MmW8HMdv7yb+92zmAoo8tPQiXSWe8IUe03hKc3bWY=",
+        "lastModified": 1757524637,
+        "narHash": "sha256-7XuSGHV7Vw1Z1v+NW/mVncUgBD9RQ9yre+YA4vZufMo=",
         "owner": "Goldan32",
         "repo": "dotfiles",
-        "rev": "86e2520b74de7211943c32b60df6b7e661ecbd4e",
+        "rev": "133e49759e13c8bc55190560d516b6c49beb9aca",
         "type": "github"
       },
       "original": {
