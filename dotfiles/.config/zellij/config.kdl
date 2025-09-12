@@ -1,0 +1,5 @@
+on_force_close "detach"
+copy_on_select true
+copy_clipboard "system"
+scrollback_editor "/usr/bin/nvim"
+pane_frames false

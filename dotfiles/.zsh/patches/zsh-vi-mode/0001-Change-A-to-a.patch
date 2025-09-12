@@ -1,0 +1,28 @@
+From 812f7d14b8484ec99fb0417bb267ed4efbb96f06 Mon Sep 17 00:00:00 2001
+From: Daniel Arany <adani32@gmail.com>
+Date: Sat, 18 May 2024 18:02:40 +0200
+Subject: [PATCH] Change A to a
+
+---
+ zsh-vi-mode.zsh | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/zsh-vi-mode.zsh b/zsh-vi-mode.zsh
+index 93c80c2..2cc6d7e 100644
+--- a/zsh-vi-mode.zsh
++++ b/zsh-vi-mode.zsh
+@@ -3475,9 +3475,9 @@ function zvm_init() {
+ 
+   # Insert mode
+   zvm_bindkey vicmd 'i'  zvm_enter_insert_mode
+-  zvm_bindkey vicmd 'a'  zvm_enter_insert_mode
++  zvm_bindkey vicmd 'A'  zvm_enter_insert_mode
+   zvm_bindkey vicmd 'I'  zvm_insert_bol
+-  zvm_bindkey vicmd 'A'  zvm_append_eol
++  zvm_bindkey vicmd 'a'  zvm_append_eol
+ 
+   # Other key bindings
+   zvm_bindkey vicmd  'v' zvm_enter_visual_mode
+-- 
+2.43.0
+

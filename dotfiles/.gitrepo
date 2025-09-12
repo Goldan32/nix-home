@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = ssh://git@github.com/Goldan32/dotfiles
+	branch = nixos-subrepo
+	commit = 133e49759e13c8bc55190560d516b6c49beb9aca
+	parent = c2b7fe528b8a2f2b527e6d20b14c3f9b43176d07
+	method = merge
+	cmdver = 0.4.9
