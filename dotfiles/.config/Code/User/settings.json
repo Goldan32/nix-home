@@ -1,0 +1,51 @@
+{
+    "workbench.iconTheme": "material-icon-theme",
+    "workbench.colorTheme": "Material Theme Palenight High Contrast",
+    "telemetry.telemetryLevel": "off",
+    "editor.mouseWheelScrollSensitivity": 5,
+    "editor.minimap.enabled": false,
+    "[latex]" : {
+        "editor.wordWrap": "on",
+        "editor.wordBasedSuggestions": "off",
+    },
+    "[markdown]": {
+        "editor.wordWrap": "on"
+    },
+    "spellright.documentTypes": [
+        "markdown",
+        "latex"
+    ],
+    "spellright.language": [
+        "hu_HU",
+        "en_US"
+    ],
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "editor.fontFamily": "Roboto Mono",
+    "editor.fontSize": 15,
+    "editor.fontWeight": "400",
+    "workbench.startupEditor": "none",
+    "cortex-debug.enableTelemetry": false,
+    "rust-analyzer.showUnlinkedFileNotification": false,
+    "files.watcherExclude": {
+        "**/target/**": true
+    },
+    "terminal.external.linuxExec": "nu",
+    "editor.acceptSuggestionOnEnter": "off",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "editor.cursorBlinking": "smooth",
+    "editor.lineHeight": 0,
+    "window.title": "${rootName}",
+    "extensions.ignoreRecommendations": true,
+    "cmake.configureOnOpen": false,
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["-"],
+            "after": ["$"]
+        },
+    ],
+    "keyboard.dispatch": "keyCode",
+}

@@ -1,0 +1,35 @@
+[alias]
+    tree = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    tree2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+    b = branch
+    showfiles = diff-tree --no-commit-id --name-only -r HEAD
+    co = checkout
+    hash = "rev-list --max-count=1 --skip=# HEAD"
+    amend = commit --amend --no-edit
+    alias = ! git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+    bs = branch --show-current
+    difffiles = diff --name-only
+    untracked = ls-files --others --exclude-standard
+    s = status
+    chp = cherry-pick
+    logfile = log --pretty=\"format:%C(yellow)%H%C(reset) - %C(green)%an%C(reset) - %C(cyan)(%as)%C(reset) - %C(blue)%s%C(reset)\" --name-only
+[core]
+    editor = nvim
+[user]
+    name = "Goldan32"
+    email = "50270724+Goldan32@users.noreply.github.com"
+[merge]
+    tool = nvimdiff2
+[difftool]
+    prompt = true
+[diff]
+    tool = nvimdiff
+[difftool "nvimdiff"]
+    cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
+[color]
+    ui = auto
+[includeIf "gitdir:~/work/"]
+    path = ~/.config/git/user-professional
+[include]
+    path = ~/.config/git/corpo.conf
+
