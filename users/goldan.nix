@@ -69,6 +69,7 @@ in
     roboto-mono
     wezterm
     zoxide
+    git-subrepo
 
   ];
 
