@@ -1,5 +1,7 @@
 { config, lib, pkgs, jotter, system, dotfiles, ... }: 
 let
+  git-matr = import ../modules/matr.nix { inherit pkgs; };
+
   # automatically collect subdirs from dotfiles/config/
   configDirs = builtins.attrNames (builtins.readDir "${dotfiles}/.config");
 
@@ -71,6 +73,7 @@ in
     jq
     pamixer
 
+    git-matr
   ];
 
   #
