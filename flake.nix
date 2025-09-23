@@ -10,7 +10,7 @@
     jotter.url = "github:Goldan32/jotter?ref=0.4.1";
     jotter.inputs.nixpkgs.follows = "nixpkgs";
 
-    dotfiles.url = "github:Goldan32/dotfiles/nixos";
+    dotfiles.url = "path:./dotfiles";
   };
 
   outputs = { self, nixpkgs, home-manager, jotter, dotfiles, ... }:

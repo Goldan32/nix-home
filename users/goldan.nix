@@ -85,23 +85,23 @@ in
       ".zsh/scripts".source = "${dotfiles}/.zsh/scripts";
       ".local/scripts".source = "${dotfiles}/.local/scripts";
       ".local/start-page".source = "${dotfiles}/.local/start-page";
+
+      # Beg for dark mode
+      ".config/gtk-3.0/settings.ini".text = ''
+        [Settings]
+        gtk-error-bell=false
+        gtk-application-prefer-dark-theme=1
+      '';
+      ".config/gtk-4.0/settings.ini".text = ''
+        [Settings]
+        gtk-error-bell=false
+        gtk-application-prefer-dark-theme=1
+      '';
     }
   ];
 
   home.activation.batCacheBuild = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     ${pkgs.bat}/bin/bat cache --build
-  '';
-
-  # Beg for dark mode
-  ".config/gtk-3.0/settings.ini".text = ''
-    [Settings]
-    gtk-error-bell=false
-    gtk-application-prefer-dark-theme=1
-  '';
-  ".config/gtk-4.0/settings.ini".text = ''
-    [Settings]
-    gtk-error-bell=false
-    gtk-application-prefer-dark-theme=1
   '';
 
   #
