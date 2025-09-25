@@ -6,6 +6,7 @@
     roboto-mono
     wezterm
     pamixer
+    vlc
   ];
 
   #

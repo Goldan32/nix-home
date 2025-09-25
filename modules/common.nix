@@ -57,6 +57,7 @@ in
 
     zoxide
     jq
+    wl-clipboard
   ];
 
   #
