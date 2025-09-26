@@ -7,6 +7,9 @@
     wezterm
     pamixer
     vlc
+    xfce.thunar
+    grim
+    dracula-theme
   ];
 
   #
@@ -23,6 +26,14 @@
       ExecStart = "${pkgs.dunst}/bin/dunst";
       # Restart = "always";
       # RestartSec = 5;
+    };
+  };
+
+  gtk = {
+    enable = true;
+    theme = {
+      package = pkgs.dracula-theme;
+      name = "Dracula";
     };
   };
 }
