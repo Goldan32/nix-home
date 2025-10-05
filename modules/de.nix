@@ -10,6 +10,7 @@
     xfce.thunar
     grim
     dracula-theme
+    hyprpaper
   ];
 
   #
@@ -24,8 +25,6 @@
     Service = {
       Type = "exec";
       ExecStart = "${pkgs.dunst}/bin/dunst";
-      # Restart = "always";
-      # RestartSec = 5;
     };
   };
 
