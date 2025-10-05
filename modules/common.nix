@@ -58,6 +58,7 @@ in
     zoxide
     jq
     wl-clipboard
+    fastfetch
   ];
 
   #
