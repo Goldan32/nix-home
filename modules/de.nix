@@ -11,6 +11,7 @@
     grim
     dracula-theme
     hyprpaper
+    papers
   ];
 
   #
@@ -33,6 +34,13 @@
     theme = {
       package = pkgs.dracula-theme;
       name = "Dracula";
+    };
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "application/pdf" = "papers";
     };
   };
 }

@@ -59,6 +59,7 @@ in
     jq
     wl-clipboard
     fastfetch
+    file
   ];
 
   #
