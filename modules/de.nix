@@ -13,6 +13,7 @@
     hyprpaper
     papers
     qimgv
+    playerctl
   ];
 
   #
