@@ -26,6 +26,15 @@
         ];
       };
 
+      homeConfigurations.headless = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = { inherit jotter system dotfiles; };
+        modules = [ 
+          ./users/headless.nix 
+        ];
+      };
+
       hmModules.goldan = ./users/goldan.nix;
+      hmModules.headless = ./users/headless.nix;
     };
 }
