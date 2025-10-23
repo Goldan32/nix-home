@@ -60,6 +60,7 @@ in
     wl-clipboard
     fastfetch
     file
+    bmaptool
   ];
 
   #
