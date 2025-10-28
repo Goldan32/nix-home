@@ -61,6 +61,8 @@ in
     fastfetch
     file
     bmaptool
+    rclone
+    rsync
   ];
 
   #
