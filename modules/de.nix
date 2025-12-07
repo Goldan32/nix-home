@@ -15,6 +15,7 @@
     qimgv
     playerctl
     obsidian
+    slurp
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [

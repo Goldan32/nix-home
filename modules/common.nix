@@ -63,6 +63,7 @@ in
     bmaptool
     rclone
     rsync
+    imagemagick
   ];
 
   #
