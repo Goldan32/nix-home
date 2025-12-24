@@ -25,7 +25,6 @@ in
     zsh
     gnumake
     htop
-    gcc
     tree
     gnutar
     cmake
@@ -36,15 +35,21 @@ in
     sqlite
     dunst
     fd
+    clang
 
     neovim
     ripgrep
     stylua
+    lua-language-server
     bash-language-server
     typescript-language-server
-    prettier
+    svelte-language-server
+    prettierd
     pyright
     shellcheck
+    rust-analyzer
+    rustfmt
+    clang-tools
 
     cargo
     bat
