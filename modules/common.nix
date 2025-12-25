@@ -50,6 +50,7 @@ in
     rust-analyzer
     rustfmt
     clang-tools
+    rustc
 
     cargo
     bat
