@@ -1,7 +1,7 @@
 { config, lib, pkgs, system, ... }:
 {
   home.packages = with pkgs; [
-    wofi
+    rofi
     firefox
     roboto-mono
     wezterm
@@ -16,6 +16,8 @@
     playerctl
     obsidian
     slurp
+    signal-desktop
+    fzf
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
