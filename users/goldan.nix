@@ -3,6 +3,7 @@
   imports = [
     ../modules/de.nix
     ../modules/common.nix
+    ../modules/rofi.nix
   ];
 
   home.username = "goldan";
