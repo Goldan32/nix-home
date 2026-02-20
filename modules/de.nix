@@ -18,6 +18,7 @@
     slurp
     signal-desktop
     fzf
+    nerd-fonts.roboto-mono
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [

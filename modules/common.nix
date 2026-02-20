@@ -70,6 +70,8 @@ in
     rclone
     rsync
     imagemagick
+    usbutils
+    libmtp
   ];
 
   #
