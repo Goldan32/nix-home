@@ -7,7 +7,7 @@
     wezterm
     pamixer
     vlc
-    xfce.thunar
+    thunar
     grim
     dracula-theme
     hyprpaper
@@ -19,6 +19,8 @@
     signal-desktop
     fzf
     nerd-fonts.roboto-mono
+    waybar
+    blueman
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
