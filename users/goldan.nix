@@ -1,4 +1,4 @@
-{ config, lib, pkgs, jotter, system, dotfiles, ... }: 
+{ config, lib, pkgs, jotter, system, dotfiles, zen-browser, ... }: 
 {
   imports = [
     ../modules/de.nix
