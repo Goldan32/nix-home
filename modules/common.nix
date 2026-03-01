@@ -33,7 +33,6 @@ in
     pkg-config
     unzip
     sqlite
-    dunst
     fd
     clang
 

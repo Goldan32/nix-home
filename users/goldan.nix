@@ -5,6 +5,7 @@
     ../modules/common.nix
     ../modules/rofi.nix
     ../modules/waybar.nix
+    ../modules/dunst.nix
   ];
 
   home.username = "goldan";

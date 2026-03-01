@@ -27,21 +27,6 @@
       "obsidian"
   ];
 
-  #
-  # Dunst service
-  #
-  systemd.user.services.dunst = {
-    Unit = {
-      Description = "Dunst Notification Daemon";
-      After = "default.target";
-    };
-    Install.WantedBy = ["default.target"];
-    Service = {
-      Type = "exec";
-      ExecStart = "${pkgs.dunst}/bin/dunst";
-    };
-  };
-
   gtk = {
     enable = true;
     theme = {
