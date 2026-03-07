@@ -1,6 +1,5 @@
 { config, pkgs, lib, ... }:
 {
-  # Ensure waybar is installed
   home.packages = [ pkgs.dunst ];
 
   systemd.user.services.dunst = {
