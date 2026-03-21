@@ -85,8 +85,11 @@ in
       ".zsh/scripts".source = "${dotfiles}/.zsh/scripts";
       ".local/scripts".source = "${dotfiles}/.local/scripts";
       ".local/start-page".source = "${dotfiles}/.local/start-page";
-      ".local/bin/switch-audio".source = "${dotfiles}/.local/scripts/switch-audio.sh";
     }
+  ];
+
+  home.sessionPath = [
+    "$HOME/.local/scripts"
   ];
 
   home.activation.batCacheBuild = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
