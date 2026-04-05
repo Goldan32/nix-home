@@ -71,7 +71,6 @@ in
     imagemagick
     usbutils
     libmtp
-    tailscale
   ];
 
   #
