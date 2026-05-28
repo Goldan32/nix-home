@@ -53,7 +53,7 @@ in
 
     cargo
     bat
-    jotter.packages.${system}.default
+    #jotter.packages.${system}.default
     cargo-generate
 
     nodejs
