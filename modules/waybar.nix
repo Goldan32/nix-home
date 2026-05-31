@@ -5,25 +5,22 @@ let
     + "--style ${config.xdg.configHome}/waybar/style.css";
 in
 {
-  # Ensure waybar is installed
   home.packages = [ pkgs.waybar ];
 
-  # Autostart via systemd user service
   systemd.user.services.waybar = {
     Unit = {
       Description = "Waybar status bar";
       PartOf = [ "graphical-session.target" ];
-      After = [ "graphical-session.target" ];
+      StartLimitIntervalSec = 0;
     };
-
     Service = {
       ExecStart = waybarCmd;
       Restart = "always";
-      RestartSec = 5;
+      RestartSec = 2;
+      Environment = [ "WAYLAND_DISPLAY=wayland-1" ];
     };
-
     Install = {
-      WantedBy = [ "graphical-session.target" ];
+      WantedBy = [ "default.target" ];
     };
   };
 }

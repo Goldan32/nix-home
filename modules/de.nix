@@ -27,6 +27,11 @@
       "obsidian"
   ];
 
+  wayland.windowManager.hyprland = {
+    enable = true;
+    systemd.enable = true;
+  };
+
   gtk.gtk4.theme = config.gtk.theme;
 
   gtk = {
@@ -65,6 +70,7 @@
       "image/jp2" = "qimgv";
       "image/vnd.ms-photo" = "qimgv";
       "image/x-icon" = "qimgv";
+      "application/epub+zip" = "calibre";
     };
   };
 }
