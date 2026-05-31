@@ -4,6 +4,8 @@ let
 
   configDirs = builtins.attrNames (builtins.readDir "${dotfiles}/.config");
 
+  mkScript = name: pkgs.writeShellScriptBin name (builtins.readFile "${dotfiles}/.local/scripts/${name}.sh");
+
   blacklist = [ "Code" ];
   filteredConfigDirs = lib.filter (dir: !(builtins.elem dir blacklist)) configDirs;
 
@@ -17,6 +19,9 @@ let
 in
 {
   home.packages = with pkgs; [
+    (mkScript "kindle")
+    (mkScript "switch-audio")
+
     git-matr
     hostname
     acpi
@@ -86,10 +91,6 @@ in
       ".local/scripts".source = "${dotfiles}/.local/scripts";
       ".local/start-page".source = "${dotfiles}/.local/start-page";
     }
-  ];
-
-  home.sessionPath = [
-    "$HOME/.local/scripts"
   ];
 
   home.activation.batCacheBuild = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
