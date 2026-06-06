@@ -11,6 +11,7 @@
     Service = {
       Type = "exec";
       ExecStart = "${pkgs.dunst}/bin/dunst";
+      Restart = "on-failure";
     };
   };
 
