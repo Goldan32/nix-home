@@ -41,7 +41,7 @@ in
     fd
     clang
 
-    neovim
+    tree-sitter
     ripgrep
     stylua
     lua-language-server

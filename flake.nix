@@ -14,29 +14,29 @@
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
     dotfiles.url = "path:./dotfiles";
-  };
 
-  outputs = { self, nixpkgs, home-manager, jotter, dotfiles, zen-browser, ... }:
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
+  };
+  outputs = { self, nixpkgs, home-manager, jotter, dotfiles, zen-browser, neovim-nightly-overlay, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
     in {
       homeConfigurations.goldan = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = { inherit zen-browser jotter system dotfiles; };
-        modules = [ 
-          ./users/goldan.nix 
+        extraSpecialArgs = { inherit zen-browser jotter system dotfiles neovim-nightly-overlay; };
+        modules = [
+          ./users/goldan.nix
         ];
       };
-
       homeConfigurations.headless = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = { inherit jotter system dotfiles; };
-        modules = [ 
-          ./users/headless.nix 
+        extraSpecialArgs = { inherit jotter system dotfiles neovim-nightly-overlay; };
+        modules = [
+          ./users/headless.nix
         ];
       };
-
       hmModules.goldan = ./users/goldan.nix;
       hmModules.headless = ./users/headless.nix;
     };
