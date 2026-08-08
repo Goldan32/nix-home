@@ -76,6 +76,8 @@ in
     imagemagick
     usbutils
     libmtp
+    xmake
+    lua
   ];
 
   #
