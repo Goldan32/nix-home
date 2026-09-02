@@ -21,6 +21,7 @@
     nerd-fonts.roboto-mono
     waybar
     blueman
+    ripdrag
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
