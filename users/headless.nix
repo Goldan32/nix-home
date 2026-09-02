@@ -2,6 +2,7 @@
 {
   imports = [
     ../modules/common.nix
+    ../modules/neovim.nix
   ];
 
   home.username = "goldan";
