@@ -37,7 +37,15 @@
           ./users/headless.nix
         ];
       };
+      homeConfigurations.tv = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = { inherit system dotfiles neovim-nightly-overlay; };
+        modules = [
+          ./users/tv.nix
+        ];
+      };
       hmModules.goldan = ./users/goldan.nix;
       hmModules.headless = ./users/headless.nix;
+      hmModules.tv = ./users/tv.nix;
     };
 }
