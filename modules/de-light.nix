@@ -2,7 +2,6 @@
 {
   home.packages = with pkgs; [
     rofi
-    firefox
     roboto-mono
     wezterm
     pamixer
@@ -13,8 +12,6 @@
     papers
     qimgv
     playerctl
-    slurp
-    fzf
     nerd-fonts.roboto-mono
     blueman
   ];

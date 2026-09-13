@@ -5,6 +5,7 @@
     ../modules/common.nix
     ../modules/rofi.nix
     ../modules/neovim.nix
+    ../modules/firefox-full.nix
   ];
 
   home.username = "goldan";
