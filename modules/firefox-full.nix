@@ -126,11 +126,13 @@ in
         "browser.aboutConfig.showWarning" = true;          # true / false — show the warning page on about:config
 
         #### FEATURES ###
-        "layout.spellcheckDefault" = 1;                    # 0 = off, 1 = multi-line fields, 2 = all text fields
+        "layout.spellcheckDefault" = 0;                    # 0 = off, 1 = multi-line fields, 2 = all text fields
         "widget.use-xdg-desktop-portal.file-picker" = 1;   # 0 = GTK picker, 1 = xdg-desktop-portal file picker
         "extensions.webextensions.restrictedDomains" = ""; # domains extensions can't touch; empty = none restricted (WARNING: lets adblockers run everywhere)
         "media.webrtc.camera.allow-pipewire" = true;       # true / false — allow camera capture via PipeWire
         "browser.download.always_ask_before_handling_new_types" = true; # true / false — ask what to do for unknown file types
+
+        "layout.css.devPixelsPerPx" = "2";
 
         #### DEBLOAT ###
         "browser.discovery.enabled" = false;               # true / false — share installed add-ons with AMO for recommendations

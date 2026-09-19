@@ -14,6 +14,7 @@
     playerctl
     nerd-fonts.roboto-mono
     blueman
+    jellyfin-desktop
   ];
 
   gtk.gtk4.theme = config.gtk.theme;
