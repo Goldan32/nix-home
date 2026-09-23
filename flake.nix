@@ -14,6 +14,7 @@
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
     dotfiles.url = "path:./dotfiles";
+    dotfiles.flake = false;
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
