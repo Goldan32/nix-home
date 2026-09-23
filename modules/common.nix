@@ -55,6 +55,8 @@ in
     rustfmt
     clang-tools
     rustc
+    nil
+    nixfmt
 
     cargo
     bat
