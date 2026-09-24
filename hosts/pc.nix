@@ -18,5 +18,6 @@
     "dbtools"
     "cmdtools"
     "python"
+    "debug"
   ];
 }

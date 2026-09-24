@@ -56,6 +56,9 @@ let
       jq
       bmaptool
     ];
+    debug = [
+      vscode-extensions.vadimcn.vscode-lldb.adapter
+    ];
   };
 in
 {
