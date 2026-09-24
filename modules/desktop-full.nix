@@ -16,8 +16,7 @@
   ];
 
   wayland.windowManager.hyprland = {
-    enable = true;
-    systemd.enable = true;
+    configType = "hyprlang";
   };
 
   gtk.gtk4.theme = config.gtk.theme;
@@ -31,6 +30,7 @@
   };
 
   home.pointerCursor = {
+    enable = true;
     name = "phinger-cursors-light";
     package = pkgs.phinger-cursors;
     size = 32;
