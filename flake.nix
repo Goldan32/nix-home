@@ -1,6 +1,4 @@
 {
-  description = "Home Manager config";
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
@@ -10,43 +8,51 @@
     jotter.url = "github:Goldan32/jotter/0.4.2";
     jotter.inputs.nixpkgs.follows = "nixpkgs";
 
-    zen-browser.url = "github:youwen5/zen-browser-flake";
-    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
-
     dotfiles.url = "path:./dotfiles";
     dotfiles.flake = false;
 
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
     neovim-nightly-overlay.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = { self, nixpkgs, home-manager, jotter, dotfiles, zen-browser, neovim-nightly-overlay, ... }:
+
+  outputs =
+    {
+      nixpkgs,
+      home-manager,
+      jotter,
+      dotfiles,
+      neovim-nightly-overlay,
+      ...
+    }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
-    in {
-      homeConfigurations.goldan = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit zen-browser jotter system dotfiles neovim-nightly-overlay; };
-        modules = [
-          ./users/goldan.nix
-        ];
-      };
-      homeConfigurations.headless = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit jotter system dotfiles neovim-nightly-overlay; };
-        modules = [
-          ./users/headless.nix
-        ];
-      };
-      homeConfigurations.tv = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit system dotfiles neovim-nightly-overlay; };
-        modules = [
-          ./users/tv.nix
-        ];
-      };
-      hmModules.goldan = ./users/goldan.nix;
-      hmModules.headless = ./users/headless.nix;
-      hmModules.tv = ./users/tv.nix;
+      inherit (nixpkgs) lib;
+
+      hosts = [
+        "pc"
+        "zenbook"
+        "server"
+        "vm"
+      ];
+    in
+    {
+      homeConfigurations = lib.genAttrs hosts (
+        host:
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = {
+            inherit
+              jotter
+              system
+              dotfiles
+              neovim-nightly-overlay
+              ;
+          };
+          modules = [ ./hosts/${host}.nix ];
+        }
+      );
+
+      hmModules = lib.genAttrs hosts (host: ./hosts/${host}.nix);
     };
 }

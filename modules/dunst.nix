@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, ... }:
 {
   home.packages = [ pkgs.dunst ];
 
@@ -7,12 +7,11 @@
       Description = "Dunst Notification Daemon";
       After = "default.target";
     };
-    Install.WantedBy = ["default.target"];
+    Install.WantedBy = [ "default.target" ];
     Service = {
       Type = "exec";
       ExecStart = "${pkgs.dunst}/bin/dunst";
       Restart = "on-failure";
     };
   };
-
 }

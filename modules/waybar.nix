@@ -1,6 +1,7 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 let
-  waybarCmd = "${pkgs.waybar}/bin/waybar "
+  waybarCmd =
+    "${pkgs.waybar}/bin/waybar "
     + "--config ${config.xdg.configHome}/waybar/config.jsonc "
     + "--style ${config.xdg.configHome}/waybar/style.css";
 in

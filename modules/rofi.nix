@@ -1,6 +1,5 @@
-{ config, lib, pkgs, system, ... }:
+{ ... }:
 let
-  # Shared color palette — used by both theme files
   colors = ''
     * {
       bg: #1e1e1e;
@@ -15,32 +14,32 @@ let
   fontFamily = "Roboto Mono";
 
   fixed = {
-    windowWidth  = "60%";
+    windowWidth = "60%";
     windowHeight = "60%";
-    borderWidth  = 2;   # px
-    borderRadius = 8;   # px
+    borderWidth = 2;
+    borderRadius = 8;
   };
 
   normal = {
-    fontSize       = 12;  # pt
-    windowPadding  = 4;  # px
-    mainboxSpacing = 4;   # px
-    inputPadding   = 4;   # px
-    inputRadius    = 4;   # px
-    listSpacing    = 4;   # px
-    elementPadding = 4;   # px
-    elementRadius  = 4;   # px
+    fontSize = 12;
+    windowPadding = 4;
+    mainboxSpacing = 4;
+    inputPadding = 4;
+    inputRadius = 4;
+    listSpacing = 4;
+    elementPadding = 4;
+    elementRadius = 4;
   };
 
   giant = {
-    fontSize       = 32;  # pt
-    windowPadding  = 12;  # px
-    mainboxSpacing = 12;  # px
-    inputPadding   = 12;  # px
-    inputRadius    = 12;  # px
-    listSpacing    = 12;  # px
-    elementPadding = 12;  # px
-    elementRadius  = 12;  # px
+    fontSize = 32;
+    windowPadding = 12;
+    mainboxSpacing = 12;
+    inputPadding = 12;
+    inputRadius = 12;
+    listSpacing = 12;
+    elementPadding = 12;
+    elementRadius = 12;
   };
 
   mkTheme = v: ''
@@ -89,6 +88,5 @@ in
     theme = builtins.toFile "rofi-theme.rasi" (mkTheme normal);
   };
 
-  xdg.configFile."rofi/giant-rofi.rasi".source =
-    builtins.toFile "giant-rofi.rasi" (mkTheme giant);
+  xdg.configFile."rofi/giant-rofi.rasi".source = builtins.toFile "giant-rofi.rasi" (mkTheme giant);
 }

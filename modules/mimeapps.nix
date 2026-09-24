@@ -1,39 +1,5 @@
-{ config, lib, pkgs, system, ... }:
+{ ... }:
 {
-  home.packages = with pkgs; [
-    rofi
-    roboto-mono
-    wezterm
-    pamixer
-    vlc
-    thunar
-    grim
-    dracula-theme
-    papers
-    qimgv
-    playerctl
-    nerd-fonts.roboto-mono
-    blueman
-    jellyfin-desktop
-  ];
-
-  gtk.gtk4.theme = config.gtk.theme;
-
-  gtk = {
-    enable = true;
-    theme = {
-      package = pkgs.dracula-theme;
-      name = "Dracula";
-    };
-  };
-
-  home.pointerCursor = {
-    name = "phinger-cursors-light";
-    package = pkgs.phinger-cursors;
-    size = 32;
-    gtk.enable = true;
-  };
-
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
@@ -59,4 +25,3 @@
     };
   };
 }
-

@@ -1,0 +1,20 @@
+{
+  imports = [
+    ../modules/core.nix
+    ../modules/core-utils.nix
+    ../modules/essential.nix
+    ../modules/devtools.nix
+    ../modules/matr.nix
+    ../modules/rofi.nix
+    ../modules/mimeapps.nix
+    ../modules/dunst.nix
+    ../modules/neovim.nix
+    ../modules/obsidian.nix
+    ../modules/desktop-full.nix
+    ../modules/terminal.nix
+    ../modules/control.nix
+    ../modules/dotfiles-install.nix
+    ../modules/waybar.nix
+    ../modules/kindle.nix
+  ];
+}
