@@ -1,136 +1,244 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 let
-  inherit (config.lib.formats.rasi) mkLiteral;
+  normalRasi = ''
+    * {
+      background-color: transparent;
+      text-color: #D9DCE3;
+      margin: 0px;
+      padding: 0px;
+      spacing: 0px;
+    }
 
-  colloidTheme = {
-    "*" = {
-      background-color = mkLiteral "transparent";
-      text-color = mkLiteral "#D9DCE3";
-      margin = 0;
-      padding = 0;
-      spacing = 0;
-    };
+    window {
+      location: center;
+      width: 520px;
+      background-color: #18191CEE;
+      border: 1px;
+      border-color: #30343C;
+      border-radius: 18px;
+    }
 
-    window = {
-      location = mkLiteral "center";
-      width = mkLiteral "520px";
-      background-color = mkLiteral "#18191CEE";
-      border = mkLiteral "1px";
-      border-color = mkLiteral "#30343C";
-      border-radius = mkLiteral "18px";
-    };
+    mainbox {
+      padding: 14px;
+    }
 
-    mainbox = {
-      padding = mkLiteral "14px";
-    };
+    inputbar {
+      background-color: #222429;
+      border: 1px;
+      border-color: #343842;
+      border-radius: 14px;
+      padding: 10px 16px;
+      spacing: 10px;
+      children: [ prompt, entry ];
+    }
 
-    inputbar = {
-      background-color = mkLiteral "#222429";
-      border = mkLiteral "1px";
-      border-color = mkLiteral "#343842";
-      border-radius = mkLiteral "14px";
-      padding = mkLiteral "10px 16px";
-      spacing = mkLiteral "10px";
-      children = [
-        (mkLiteral "prompt")
-        (mkLiteral "entry")
-      ];
-    };
+    prompt {
+      text-color: #78A9E8;
+    }
 
-    prompt = {
-      text-color = mkLiteral "#78A9E8";
-    };
+    entry {
+      placeholder: "Search";
+      placeholder-color: #666C78;
+      text-color: #F4F5F7;
+    }
 
-    entry = {
-      placeholder = "Search";
-      placeholder-color = mkLiteral "#666C78";
-      text-color = mkLiteral "#F4F5F7";
-    };
+    listview {
+      background-color: transparent;
+      margin: 12px 0px 0px;
+      lines: 8;
+      columns: 1;
+      fixed-height: false;
+      spacing: 4px;
+    }
 
-    listview = {
-      background-color = mkLiteral "transparent";
-      margin = mkLiteral "12px 0px 0px";
-      lines = 8;
-      columns = 1;
-      fixed-height = false;
-      spacing = mkLiteral "4px";
-    };
+    element {
+      padding: 9px 12px;
+      spacing: 10px;
+      border-radius: 10px;
+      background-color: transparent;
+    }
 
-    element = {
-      padding = mkLiteral "9px 12px";
-      spacing = mkLiteral "10px";
-      border-radius = mkLiteral "10px";
-      background-color = mkLiteral "transparent";
-    };
+    element-text {
+      text-color: inherit;
+      vertical-align: 0.5;
+    }
 
-    "element-text" = {
-      text-color = mkLiteral "inherit";
-      vertical-align = mkLiteral "0.5";
-    };
+    element-icon {
+      size: 1.15em;
+      vertical-align: 0.5;
+    }
 
-    "element-icon" = {
-      size = mkLiteral "1.15em";
-      vertical-align = mkLiteral "0.5";
-    };
+    element selected {
+      background-color: #78A9E8;
+      text-color: #1B2028;
+    }
 
-    "element selected" = {
-      background-color = mkLiteral "#78A9E8";
-      text-color = mkLiteral "#1B2028";
-    };
+    element selected normal {
+      background-color: #78A9E8;
+      text-color: #1B2028;
+    }
 
-    "element selected normal" = {
-      background-color = mkLiteral "#78A9E8";
-      text-color = mkLiteral "#1B2028";
-    };
+    element selected active {
+      background-color: #78A9E8;
+      text-color: #1B2028;
+    }
 
-    "element selected active" = {
-      background-color = mkLiteral "#78A9E8";
-      text-color = mkLiteral "#1B2028";
-    };
+    element selected alternate {
+      background-color: #78A9E8;
+      text-color: #1B2028;
+    }
 
-    "element selected alternate" = {
-      background-color = mkLiteral "#78A9E8";
-      text-color = mkLiteral "#1B2028";
-    };
+    element normal active,
+    element alternate active {
+      text-color: #78A9E8;
+    }
 
-    "element normal active" = {
-      text-color = mkLiteral "#78A9E8";
-    };
+    message {
+      margin: 12px 0px 0px;
+      padding: 0px;
+      border: 1px;
+      border-color: #343842;
+      border-radius: 12px;
+      background-color: #2A2D33;
+    }
 
-    "element alternate active" = {
-      text-color = mkLiteral "#78A9E8";
-    };
+    textbox {
+      padding: 8px 16px;
+      text-color: #AEB4BF;
+    }
 
-    message = {
-      margin = mkLiteral "12px 0px 0px";
-      padding = 0;
-      border = mkLiteral "1px";
-      border-color = mkLiteral "#343842";
-      border-radius = mkLiteral "12px";
-      background-color = mkLiteral "#2A2D33";
-    };
+    scrollbar {
+      handle-width: 4px;
+      handle-color: #78A9E8;
+      background-color: transparent;
+      border: 0px;
+    }
+  '';
 
-    textbox = {
-      padding = mkLiteral "8px 16px";
-      text-color = mkLiteral "#AEB4BF";
-    };
+  giantRasi = ''
+    * {
+      background-color: transparent;
+      text-color: #D9DCE3;
+      margin: 0px;
+      padding: 0px;
+      spacing: 0px;
+    }
 
-    scrollbar = {
-      handle-width = mkLiteral "4px";
-      handle-color = mkLiteral "#78A9E8";
-      background-color = mkLiteral "transparent";
-      border = 0;
-    };
-  };
+    window {
+      location: center;
+      width: 900px;
+      background-color: #18191CEE;
+      border: 2px;
+      border-color: #30343C;
+      border-radius: 28px;
+    }
+
+    mainbox {
+      padding: 28px;
+    }
+
+    inputbar {
+      background-color: #222429;
+      border: 2px;
+      border-color: #343842;
+      border-radius: 22px;
+      padding: 18px 24px;
+      spacing: 16px;
+      children: [ prompt, entry ];
+    }
+
+    prompt {
+      text-color: #78A9E8;
+      font: "Sans 24";
+    }
+
+    entry {
+      placeholder: "Search";
+      placeholder-color: #666C78;
+      text-color: #F4F5F7;
+      font: "Sans 24";
+    }
+
+    listview {
+      background-color: transparent;
+      margin: 20px 0px 0px;
+      lines: 8;
+      columns: 1;
+      fixed-height: false;
+      spacing: 8px;
+    }
+
+    element {
+      padding: 16px 20px;
+      spacing: 18px;
+      border-radius: 16px;
+      background-color: transparent;
+    }
+
+    element-text {
+      text-color: inherit;
+      vertical-align: 0.5;
+      font: "Sans 20";
+    }
+
+    element-icon {
+      size: 2em;
+      vertical-align: 0.5;
+    }
+
+    element selected {
+      background-color: #78A9E8;
+      text-color: #1B2028;
+    }
+
+    element selected normal {
+      background-color: #78A9E8;
+      text-color: #1B2028;
+    }
+
+    element selected active {
+      background-color: #78A9E8;
+      text-color: #1B2028;
+    }
+
+    element selected alternate {
+      background-color: #78A9E8;
+      text-color: #1B2028;
+    }
+
+    element normal active,
+    element alternate active {
+      text-color: #78A9E8;
+    }
+
+    message {
+      margin: 20px 0px 0px;
+      padding: 0px;
+      border: 2px;
+      border-color: #343842;
+      border-radius: 18px;
+      background-color: #2A2D33;
+    }
+
+    textbox {
+      padding: 12px 20px;
+      text-color: #AEB4BF;
+      font: "Sans 18";
+    }
+
+    scrollbar {
+      handle-width: 6px;
+      handle-color: #78A9E8;
+      background-color: transparent;
+      border: 0px;
+    }
+  '';
 
 in
 {
   programs.rofi = {
     enable = true;
-
     package = pkgs.rofi;
-
-    theme = colloidTheme;
 
     font = "Sans 11";
 
@@ -145,4 +253,7 @@ in
       icon-theme = "Adwaita";
     };
   };
+
+  xdg.dataFile."rofi/themes/normal.rasi".text = normalRasi;
+  xdg.dataFile."rofi/themes/giant-rofi.rasi".text = giantRasi;
 }
