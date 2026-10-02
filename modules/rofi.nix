@@ -1,92 +1,148 @@
-{ ... }:
+{ config, pkgs, ... }:
 let
-  colors = ''
-    * {
-      bg: #1e1e1e;
-      bg-alt: #262626;
-      fg: #e0e0e0;
-      fg-alt: #a0a0a0;
-      border: #3a3a3a;
-      selected: #3f3f3f;
-    }
-  '';
+  inherit (config.lib.formats.rasi) mkLiteral;
 
-  fontFamily = "Roboto Mono";
+  colloidTheme = {
+    "*" = {
+      background-color = mkLiteral "transparent";
+      text-color = mkLiteral "#D9DCE3";
+      margin = 0;
+      padding = 0;
+      spacing = 0;
+    };
 
-  fixed = {
-    windowWidth = "60%";
-    windowHeight = "60%";
-    borderWidth = 2;
-    borderRadius = 8;
+    window = {
+      location = mkLiteral "center";
+      width = mkLiteral "520px";
+      background-color = mkLiteral "#18191CEE";
+      border = mkLiteral "1px";
+      border-color = mkLiteral "#30343C";
+      border-radius = mkLiteral "18px";
+    };
+
+    mainbox = {
+      padding = mkLiteral "14px";
+    };
+
+    inputbar = {
+      background-color = mkLiteral "#222429";
+      border = mkLiteral "1px";
+      border-color = mkLiteral "#343842";
+      border-radius = mkLiteral "14px";
+      padding = mkLiteral "10px 16px";
+      spacing = mkLiteral "10px";
+      children = [
+        (mkLiteral "prompt")
+        (mkLiteral "entry")
+      ];
+    };
+
+    prompt = {
+      text-color = mkLiteral "#78A9E8";
+    };
+
+    entry = {
+      placeholder = "Search";
+      placeholder-color = mkLiteral "#666C78";
+      text-color = mkLiteral "#F4F5F7";
+    };
+
+    listview = {
+      background-color = mkLiteral "transparent";
+      margin = mkLiteral "12px 0px 0px";
+      lines = 8;
+      columns = 1;
+      fixed-height = false;
+      spacing = mkLiteral "4px";
+    };
+
+    element = {
+      padding = mkLiteral "9px 12px";
+      spacing = mkLiteral "10px";
+      border-radius = mkLiteral "10px";
+      background-color = mkLiteral "transparent";
+    };
+
+    "element-text" = {
+      text-color = mkLiteral "inherit";
+      vertical-align = mkLiteral "0.5";
+    };
+
+    "element-icon" = {
+      size = mkLiteral "1.15em";
+      vertical-align = mkLiteral "0.5";
+    };
+
+    "element selected" = {
+      background-color = mkLiteral "#78A9E8";
+      text-color = mkLiteral "#1B2028";
+    };
+
+    "element selected normal" = {
+      background-color = mkLiteral "#78A9E8";
+      text-color = mkLiteral "#1B2028";
+    };
+
+    "element selected active" = {
+      background-color = mkLiteral "#78A9E8";
+      text-color = mkLiteral "#1B2028";
+    };
+
+    "element selected alternate" = {
+      background-color = mkLiteral "#78A9E8";
+      text-color = mkLiteral "#1B2028";
+    };
+
+    "element normal active" = {
+      text-color = mkLiteral "#78A9E8";
+    };
+
+    "element alternate active" = {
+      text-color = mkLiteral "#78A9E8";
+    };
+
+    message = {
+      margin = mkLiteral "12px 0px 0px";
+      padding = 0;
+      border = mkLiteral "1px";
+      border-color = mkLiteral "#343842";
+      border-radius = mkLiteral "12px";
+      background-color = mkLiteral "#2A2D33";
+    };
+
+    textbox = {
+      padding = mkLiteral "8px 16px";
+      text-color = mkLiteral "#AEB4BF";
+    };
+
+    scrollbar = {
+      handle-width = mkLiteral "4px";
+      handle-color = mkLiteral "#78A9E8";
+      background-color = mkLiteral "transparent";
+      border = 0;
+    };
   };
 
-  normal = {
-    fontSize = 12;
-    windowPadding = 4;
-    mainboxSpacing = 4;
-    inputPadding = 4;
-    inputRadius = 4;
-    listSpacing = 4;
-    elementPadding = 4;
-    elementRadius = 4;
-  };
-
-  giant = {
-    fontSize = 32;
-    windowPadding = 12;
-    mainboxSpacing = 12;
-    inputPadding = 12;
-    inputRadius = 12;
-    listSpacing = 12;
-    elementPadding = 12;
-    elementRadius = 12;
-  };
-
-  mkTheme = v: ''
-    ${colors}
-    * {
-      font: "${fontFamily} ${toString v.fontSize}";
-    }
-
-    window {
-      background-color: @bg;
-      border: ${toString fixed.borderWidth}px;
-      border-color: @border;
-      border-radius: ${toString fixed.borderRadius}px;
-      width: ${fixed.windowWidth};
-      height: ${fixed.windowHeight};
-      padding: ${toString v.windowPadding}px;
-    }
-
-    mainbox {
-      spacing: ${toString v.mainboxSpacing}px;
-    }
-
-    inputbar {
-      background-color: @bg-alt;
-      padding: ${toString v.inputPadding}px;
-      border-radius: ${toString v.inputRadius}px;
-    }
-
-    listview {
-      spacing: ${toString v.listSpacing}px;
-    }
-
-    element {
-      padding: ${toString v.elementPadding}px;
-      border-radius: ${toString v.elementRadius}px;
-    }
-
-    element selected {
-      background-color: @selected;
-    }
-  '';
 in
 {
   programs.rofi = {
     enable = true;
-    theme = builtins.toFile "rofi-theme.rasi" (mkTheme normal);
-  };
 
-  xdg.configFile."rofi/giant-rofi.rasi".source = builtins.toFile "giant-rofi.rasi" (mkTheme giant);
+    package = pkgs.rofi;
+
+    theme = colloidTheme;
+
+    font = "Sans 11";
+
+    extraConfig = {
+      modi = "drun,run,window";
+      show-icons = true;
+      drun-display-format = "{name}";
+      matching = "normal";
+      case-sensitive = false;
+      normalize-match = true;
+      max-history-size = 25;
+      icon-theme = "Adwaita";
+    };
+  };
 }
