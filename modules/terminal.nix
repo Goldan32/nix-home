@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    wezterm
+    kitty
     roboto-mono
     nerd-fonts.roboto-mono
   ];
