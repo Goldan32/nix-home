@@ -3,6 +3,7 @@
   imports = [
     ../groups/full.nix
     ../modules/signal.nix
+    ../modules/godot.nix
   ];
 
   home.username = "goldan";
