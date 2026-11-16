@@ -20,5 +20,6 @@
     "cmdtools"
     "python"
     "debug"
+    "embedded"
   ];
 }

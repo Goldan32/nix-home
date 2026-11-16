@@ -59,6 +59,9 @@ let
     debug = [
       vscode-extensions.vadimcn.vscode-lldb.adapter
     ];
+    embedded = [
+      picocom
+    ];
   };
 in
 {
