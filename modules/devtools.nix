@@ -31,7 +31,8 @@ let
     ];
     python = [
       uv
-      pyright
+      ruff
+      ty
     ];
     nix = [
       nil
